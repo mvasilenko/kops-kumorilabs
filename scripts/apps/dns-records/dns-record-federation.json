@@ -1,0 +1,20 @@
+{
+  "Comment": "Create/Update a latency-based CNAME record for a federated Deployment",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "hugo-fed.k8s.kumorilabs.com",
+        "Type": "CNAME",
+        "Region": "ap-northeast-1",
+        "TTL": 300,
+        "SetIdentifier": "ap-northeast-1",
+        "ResourceRecords": [
+          {
+            "Value": " a8476da95a2f311e78d7006edc4869b4-1880811496.ap-northeast-1.elb.amazonaws.com "
+          }
+        ]
+      }
+    }
+  ]
+}

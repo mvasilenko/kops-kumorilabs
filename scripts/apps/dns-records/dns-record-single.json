@@ -1,0 +1,18 @@
+{
+  "Comment": "Create/Update a CNAME record for a standalone Deployment",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "xalab.tk",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "212.83.52.10"
+          }
+        ]
+      }
+    }
+  ]
+}
