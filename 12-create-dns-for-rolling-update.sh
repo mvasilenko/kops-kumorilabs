@@ -1,7 +1,7 @@
 #!/bin/bash
 source .env
-export DNS_RECORD_PREFIX="mvasilenko-blog-rolling-update"
-export SERVICE_NAME="mvasilenko-blog-rolling-update-svc"
+#export DNS_RECORD_PREFIX="mvasilenko-blog-rolling-update"
+#export SERVICE_NAME="mvasilenko-blog-rolling-update-svc"
 export APP_ELB=$(kubectl get svc/${SERVICE_NAME} \
        --template="{{range .status.loadBalancer.ingress}} {{.hostname}} {{end}}")
 

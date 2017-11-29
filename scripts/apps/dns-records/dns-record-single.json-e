@@ -4,12 +4,12 @@
     {
       "Action": "UPSERT",
       "ResourceRecordSet": {
-        "Name": "mvasilenko-blog-rolling-update.xalab.tk",
+        "Name": "mvasilenko-blog.xalab.tk",
         "Type": "CNAME",
         "TTL": 300,
         "ResourceRecords": [
           {
-            "Value": " a13f75861d45211e79f540aa311d2e2e-1733825315.us-east-1.elb.amazonaws.com "
+            "Value": " ab4314991d4fc11e79f540aa311d2e2e-1705506532.us-east-1.elb.amazonaws.com "
           }
         ]
       }

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mvasilenko-blog-red
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mvasilenko-blog-canary
+        track: stable
+    spec:
+      containers:
+        - name: mvasilenko-blog
+          image: mvasilenko/mvasilenko-blog:red
+          ports:
+            - containerPort: 80
