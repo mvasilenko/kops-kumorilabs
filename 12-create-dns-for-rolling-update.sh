@@ -2,13 +2,13 @@
 source .env
 export DNS_RECORD_PREFIX="mvasilenko-blog-rolling-update"
 export SERVICE_NAME="mvasilenko-blog-rolling-update-svc"
-export HUGO_APP_ELB=$(kubectl get svc/${SERVICE_NAME} \
+export APP_ELB=$(kubectl get svc/${SERVICE_NAME} \
        --template="{{range .status.loadBalancer.ingress}} {{.hostname}} {{end}}")
 
 # Add to JSON file
 sed -i -e 's|"Name": ".*|"Name": "'"${DNS_RECORD_PREFIX}.${DOMAIN_NAME}"'",|g' \
     scripts/apps/dns-records/dns-record-single.json
-sed -i -e 's|"Value": ".*|"Value": "'"${HUGO_APP_ELB}"'"|g' \
+sed -i -e 's|"Value": ".*|"Value": "'"${APP_ELB}"'"|g' \
     scripts/apps/dns-records/dns-record-single.json
 
 export DOMAIN_NAME_ZONE_ID=$(aws route53 list-hosted-zones | \
