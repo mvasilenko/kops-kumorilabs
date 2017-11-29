@@ -1,7 +1,9 @@
 #!/bin/bash
 source .env
 #export DNS_RECORD_PREFIX="mvasilenko-blog-rolling-update"
-#export SERVICE_NAME="mvasilenko-blog-rolling-update-svc"
+echo DNS_RECORD_PREFIX=${DNS_RECORD_PREFIX}
+export SERVICE_NAME="${DNS_RECORD_PREFIX}-svc"
+echo SERVICE_NAME=$SERVICE_NAME
 export APP_ELB=$(kubectl get svc/${SERVICE_NAME} \
        --template="{{range .status.loadBalancer.ingress}} {{.hostname}} {{end}}")
 
@@ -18,6 +20,7 @@ select (.Name="'${DOMAIN_NAME}'.") |
  sed 's/\/hostedzone\///')
 
 echo DOMAIN_NAME_ZONE_ID=${DOMAIN_NAME_ZONE_ID}
+echo DNS_NAME=${DNS_RECORD_PREFIX}.${DOMAIN_NAME}
 
 # Create DNS record
 aws route53 change-resource-record-sets \
